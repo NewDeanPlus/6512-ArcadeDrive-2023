@@ -48,6 +48,7 @@ public class RobotContainer {
     public final DriveTrain m_driveTrain = new DriveTrain();
     public final Elevator m_elev = new Elevator();
     public final Pneumatics m_pn = new Pneumatics();
+    public final Vision m_vis = new Vision();
 
 // Joysticks
 private final Joystick joystick1 = new Joystick(0);
