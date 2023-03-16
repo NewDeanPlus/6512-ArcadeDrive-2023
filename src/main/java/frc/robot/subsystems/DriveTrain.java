@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
@@ -93,6 +94,10 @@ public class DriveTrain extends SubsystemBase {
 
     public DifferentialDrive getDifferentialDrive(){
         return d;
+    }
+
+    public CommandBase autoDrive(){
+        d.tankDrive(-.8, -.8);
     }
 
     //other stuff is mostly encoders, gyro, acc
