@@ -88,5 +88,9 @@ public class Elevator extends SubsystemBase {
     public CommandBase moveElevatorDown(){
         return this.run(()->am.set(.3));// mc3.set(.3);
     }
+
+    public CommandBase stopElevator(){
+        return this.run(()->am.set(0));
+    }
 }
 

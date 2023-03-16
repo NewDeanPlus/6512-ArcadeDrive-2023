@@ -85,7 +85,7 @@ public class Arm extends SubsystemBase {
         return this.startEnd(()->mc1.set(.4) , ()->mc1.set(0));
     }
 
-    public CommandBase stop(){
+    public CommandBase stopArm(){
         return this.runOnce(()->mc1.set(0));
     }
 }
