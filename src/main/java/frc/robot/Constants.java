@@ -34,7 +34,8 @@ public class Constants {
     }
 
     public static final class Speeds{
-        public static final double MaxDriveSpeed = .7;
+        public static final double DriveSpeedMultiplier = .6;
+        public static final double DriveSpeedOffset = 1.25;
         public static final double ASpeedUp = .4;
         public static final double ASpeedDown = .4;
         public static final double ESpeedUp = .3;

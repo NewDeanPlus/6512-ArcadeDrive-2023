@@ -105,6 +105,10 @@ public class DriveTrain extends SubsystemBase {
         return this.runOnce(()->d.tankDrive(-.8, -.8));
     }
 
+    public CommandBase trackTarget(int pipelineNumber){
+        
+    }
+
     //other stuff is mostly encoders, gyro, acc
 }
 
