@@ -32,5 +32,13 @@ public class Constants {
         public static final String Forward = "Forward";
         public static final String Reverse = "Reverse";
     }
+
+    public static final class Speeds{
+        public static final double MaxDriveSpeed = .7;
+        public static final double ASpeedUp = .4;
+        public static final double ASpeedDown = .4;
+        public static final double ESpeedUp = .3;
+        public static final double ESpeedDown = .2;
+    }
 }
 

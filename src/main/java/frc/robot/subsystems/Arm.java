@@ -77,12 +77,12 @@ public class Arm extends SubsystemBase {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    public CommandBase moveArmUp(){
-        return this.startEnd(()->mc1.set(-.4) , ()->mc1.set(0));
+    public CommandBase moveArmUp(double speed){
+        return this.startEnd(()->mc1.set(-speed) , ()->mc1.set(0));
     }
 
-    public CommandBase moveArmDown(){
-        return this.startEnd(()->mc1.set(.4) , ()->mc1.set(0));
+    public CommandBase moveArmDown(double speed){
+        return this.startEnd(()->mc1.set(speed) , ()->mc1.set(0));
     }
 
     public CommandBase stopArm(){

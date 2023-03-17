@@ -77,12 +77,12 @@ public class Elevator extends SubsystemBase {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    public CommandBase moveElevatorUp(){
-        return this.runOnce(() -> mc2.set(-.3));
+    public CommandBase moveElevatorUp(double speed){
+        return this.runOnce(() -> mc2.set(-speed));
       }
 
-    public CommandBase moveElevatorDown(){
-        return this.run(()->am.set(.2));// mc3.set(.3);
+    public CommandBase moveElevatorDown(double speed){
+        return this.run(()->am.set(speed));// mc3.set(.3);
     }
 
     public CommandBase stopElevator(){
