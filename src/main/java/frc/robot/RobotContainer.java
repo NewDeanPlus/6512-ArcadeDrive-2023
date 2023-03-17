@@ -60,13 +60,13 @@ private final XboxController xbox = new XboxController(1);
   public CommandBase autonomous = Commands.sequence(
     m_p.moveRatchetR().until(()->(Timer.getFPGATimestamp()==3)),
         Commands.parallel(
-            m_arm.moveArmDown().until(()->(Timer.getFPGATimestamp()==6)), 
-            m_elev.moveElevatorUp().until(()->(Timer.getFPGATimestamp()==6))
+            m_arm.moveArmDown(ASpeedDown).until(()->(Timer.getFPGATimestamp()==6)), 
+            m_elev.moveElevatorUp(ESpeedUp).until(()->(Timer.getFPGATimestamp()==6))
         ),
     m_p.moveClawF(),
       Commands.parallel(
-        m_arm.moveArmDown().until(()->(Timer.getFPGATimestamp()==10)), 
-        m_elev.moveElevatorUp().until(()->(Timer.getFPGATimestamp()==10))
+        m_arm.moveArmDown(ASpeedDown).until(()->(Timer.getFPGATimestamp()==10)), 
+        m_elev.moveElevatorUp(ESpeedUp).until(()->(Timer.getFPGATimestamp()==10))
       ),
     m_driveTrain.autoDrive().until(()->(Timer.getFPGATimestamp()==14))
   ).until(()->(Timer.getFPGATimestamp()==15));
