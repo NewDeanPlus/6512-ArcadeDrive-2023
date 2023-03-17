@@ -46,7 +46,6 @@ public class Elevator extends SubsystemBase {
     
     private CANSparkMax mc2, mc3;
     private MotorControllerGroup am;
-    private DoubleSolenoid rat, claw;
 
     /**
     *
@@ -61,9 +60,6 @@ public class Elevator extends SubsystemBase {
         mc3 = new CANSparkMax(6, MotorType.kBrushed);
 
         am = new MotorControllerGroup(mc2, mc3);
-
-        rat = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3);
-        claw = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 0, 1);
     }
 
     @Override
@@ -86,7 +82,7 @@ public class Elevator extends SubsystemBase {
       }
 
     public CommandBase moveElevatorDown(){
-        return this.run(()->am.set(.3));// mc3.set(.3);
+        return this.run(()->am.set(.2));// mc3.set(.3);
     }
 
     public CommandBase stopElevator(){

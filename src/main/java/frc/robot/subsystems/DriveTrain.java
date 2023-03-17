@@ -62,6 +62,11 @@ public class DriveTrain extends SubsystemBase {
         mc3 = new CANSparkMax(3, MotorType.kBrushed);
         mc4 = new CANSparkMax(4, MotorType.kBrushed);
 
+        mc1.setInverted(true);
+        mc2.setInverted(true);
+        mc3.setInverted(true);
+        mc4.setInverted(true);
+
         lc = new MotorControllerGroup(mc3, mc4);
         rc = new MotorControllerGroup(mc1, mc2);
 
@@ -97,7 +102,7 @@ public class DriveTrain extends SubsystemBase {
     }
 
     public CommandBase autoDrive(){
-        d.tankDrive(-.8, -.8);
+        return this.runOnce(()->d.tankDrive(-.8, -.8));
     }
 
     //other stuff is mostly encoders, gyro, acc

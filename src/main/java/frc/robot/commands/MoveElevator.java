@@ -66,7 +66,7 @@ public class MoveElevator extends CommandBase {
         }else if(direction == "Down"){
             m_arm.moveElevatorDown();
         }*/
-        m_arm.moveElevatorUp();
+        //m_arm.moveElevatorUp();
     }
 
     // Called once the command ends or is interrupted.
