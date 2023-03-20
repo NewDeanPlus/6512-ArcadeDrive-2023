@@ -46,6 +46,7 @@ public class Arm extends SubsystemBase {
     
     private CANSparkMax mc1;
     private RelativeEncoder e1;
+    private double armEncoderPos;
 
     /**
     *
@@ -57,13 +58,16 @@ public class Arm extends SubsystemBase {
 
         //arm motor controller
         mc1 = new CANSparkMax(7, MotorType.kBrushless);
+        mc1.setInverted(true);
 
         e1 = mc1.getEncoder();
         e1.setPosition(0);
+        e1.setPositionConversionFactor(1);
     }
 
     @Override
     public void periodic() {
+        SmartDashboard.putNumber("ArmEncoder", e1.getPosition());
         // This method will be called once per scheduler run
         //SmartDashboard.putNumber("EncoderPosition", 0);
     }
@@ -85,8 +89,18 @@ public class Arm extends SubsystemBase {
         return this.startEnd(()->mc1.set(speed) , ()->mc1.set(0));
     }
 
+    public CommandBase setTargetState(String targetState){
+        return this.runOnce(()->SmartDashboard.putString("ArmState", targetState));
+    }
+
     public CommandBase stopArm(){
         return this.runOnce(()->mc1.set(0));
+    }
+
+    public double returnEncoderPos(){
+        double armEncoderPos = e1.getPosition();
+        SmartDashboard.putNumber("ArmEncoder", armEncoderPos);
+        return armEncoderPos;
     }
 }
 
