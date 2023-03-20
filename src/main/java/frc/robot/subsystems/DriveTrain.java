@@ -99,6 +99,7 @@ public class DriveTrain extends SubsystemBase {
     public void periodic() {
         d.tankDrive(0, 0);
         SmartDashboard.putNumber("DriveEncoderPos", re.getPosition());
+        SmartDashboard.putNumber("Y Acceleration", a.getY());
         // This method will be called once per scheduler run
         //SmartDashboard.putNumber("EncoderPosition", 0);
     }
@@ -128,9 +129,9 @@ public class DriveTrain extends SubsystemBase {
     }*/
 
     public CommandBase balance(){
-        double acceleration = a.getY();
-        double angleDegrees = Math.asin(acceleration/9.8);
-        return this.runEnd(()->d.tankDrive(angleDegrees, angleDegrees), null);
+        double acceleration = a.getY(); //in g-force (units of gravity)
+        double angleDegrees = Math.asin(acceleration/9.8); //arcsin varies from 0(arcsin0) to 90(arcsin1)
+        return this.runEnd(()->d.tankDrive(angleDegrees, angleDegrees), ()->d.tankDrive(0, 0));
     }
 
     public String getArmState(){

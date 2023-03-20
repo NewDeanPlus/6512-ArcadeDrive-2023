@@ -74,8 +74,6 @@ private final XboxController xbox2 = new XboxController(2);
     m_driveTrain.autoDrive().until(()->(Timer.getFPGATimestamp()==14))
   ).until(()->(Timer.getFPGATimestamp()==15));*/
 
-
-
   public CommandBase auto2 = Commands.sequence(
     Commands.parallel(
       m_driveTrain.lockWheels().raceWith(new WaitCommand(0.1)),
@@ -85,10 +83,10 @@ private final XboxController xbox2 = new XboxController(2);
       m_p.moveClawR(),
     Commands.parallel(
       m_arm.moveArmUp(-ASpeedUp).until(()->m_arm.returnEncoderPos()>=0),
-      m_elev.moveElevatorDown(ESpeedDown).raceWith(new WaitCommand(5))
+      m_elev.moveElevatorDown(ESpeedDown).raceWith(new WaitCommand(4))
     ),//.andThen(
       m_p.moveClawF(),//.alongWith(
-      m_driveTrain.autoDrive().until(()->(m_driveTrain.re.getPosition()) <= (-10.2*7)),//divides 120 inches (10 ft) by circumference of wheel, about 6.4 rotations
+      m_driveTrain.autoDrive().until(()->(m_driveTrain.re.getPosition()) <= (-10.2*7)),//2 ft is 10.2 ticks, *7 moves 14 feet and then brakes
   //move 10ft backwards, get encoder value
     m_driveTrain.unlockWheels())
     /*)) */;
