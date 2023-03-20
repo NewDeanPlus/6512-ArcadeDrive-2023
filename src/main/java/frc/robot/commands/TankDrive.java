@@ -71,14 +71,15 @@ public class TankDrive extends CommandBase {
     public void execute() {
         j = RobotContainer.getInstance().getJoystick1();
         j0 = RobotContainer.getInstance().getXbox2();
+        x= RobotContainer.getInstance().getXbox();
         //speed = j.getThrottle() * .8;
         //turn = j.getTwist() * .8;
 
         //NEO RPM: 5676
         //CIM RPM: 5310
 
-        lspeed = (DriveSpeedMultiplier*DriveSpeedOffset*j.getThrottle());//x.getLeftY()); //+ turn;              //left speed slower when turned to left (neg turn values) //FIX ASAP
-        rspeed = (DriveSpeedMultiplier*j.getThrottle());// - turn;  //right speed slower when turned to right (pos turn values)
+        lspeed = (DriveSpeedMultiplier*DriveSpeedOffset*x.getLeftY());//x.getLeftY()); //+ turn;              //left speed slower when turned to left (neg turn values) //FIX ASAP
+        rspeed = (DriveSpeedMultiplier*x.getRightY());// - turn;  //right speed slower when turned to right (pos turn values)
         //SmartDashboard.putNumber("Speed", lspeed);
 
 
@@ -89,13 +90,15 @@ public class TankDrive extends CommandBase {
         }else{*/
             //d.tankDrive(lspeed,rspeed); //can also square inputs with true in third space to square inputs, although may have to decrease speed
         //}
-        if(j.getTwist()<-.5){
+        /*if(j.getTwist()<-.5){
             d.tankDrive(((-DriveSpeedMultiplier)*DriveSpeedMultiplier)*1.2, (DriveSpeedMultiplier/2)*1.2);
         }else if(j.getTwist()>.5){
             d.tankDrive(((DriveSpeedMultiplier)*DriveSpeedMultiplier)*1.2, (-DriveSpeedMultiplier/2)*1.2);
         }else{
             d.tankDrive(-lspeed, -rspeed);
-        }
+        }*/
+
+        d.tankDrive(-lspeed, -rspeed);
 
         /*
         d.tankDrive(-j0.getLeftY()*DriveSpeedMultiplier*DriveSpeedOffset, -j0.getRightY()*DriveSpeedMultiplier);

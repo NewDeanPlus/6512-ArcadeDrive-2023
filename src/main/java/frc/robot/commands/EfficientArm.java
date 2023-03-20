@@ -78,7 +78,7 @@ public class EfficientArm extends CommandBase {
             case "Rest":
                 switch(targetState){
                     case "Up":
-                    Commands.parallel(
+                        Commands.parallel(
                         Commands.sequence(
                             m_p.moveRatchetR(),
                             m_arm.moveArmDown(ASpeedDown).until(()->m_arm.returnEncoderPos()<=-150)
