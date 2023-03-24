@@ -112,7 +112,6 @@ public class DriveTrain extends SubsystemBase {
         g = new ADXRS450_Gyro();
 
         SmartDashboard.putString("ArmState", "Rest");
-
     }
 
     @Override
